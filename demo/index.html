@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node Server Example</title>
+  <style>
+    .input-group {
+      margin-bottom: 5px;
+    }
+
+    #craftsmenTable {
+      margin-bottom: 50px;;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="input-group">
+    <input type="text" id="query" placeholder="Postal Code">
+    <button onclick="sendQuery()">Find Craftsmen by postalcode</button>
+  </div>
+
+  <!-- Table to display the craftsmen data -->
+  <table id="craftsmenTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Postal Code</th>
+        <th>Ranking</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data rows will be inserted here -->
+    </tbody>
+  </table>
+
+  <div class="input-group">
+    <input type="text" id="id" placeholder="ID">
+    <input type="text" id="rating" placeholder="Rating">
+    <button onclick="updateRating()">Update Rating</button>
+  </div>
+
+  <script>
+    function sendQuery() {
+      const queryValue = document.getElementById('query').value;
+      fetch(`/craftsmen?postalcode=${encodeURIComponent(queryValue)}`)
+        .then(response => response.json())
+        .then(data => {
+          updateTable(data);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+
+    function updateTable(data) {
+      const table = document.getElementById('craftsmenTable').getElementsByTagName('tbody')[0];
+      table.innerHTML = ''; 
+
+      data.craftsmen.forEach(item => {
+        let row = table.insertRow();
+        let cellId = row.insertCell(0);
+        let cellName = row.insertCell(1);
+        let cellPostalCode = row.insertCell(2);
+        let cellRanking = row.insertCell(3);
+
+        cellId.textContent = item.id;
+        cellName.textContent = item.name; 
+        cellPostalCode.textContent = item.postalCode; 
+        cellRanking.textContent = item.rankingScore; 
+      });
+    }
+
+    function updateRating() {
+      const idValue = document.getElementById('id').value;
+      const ratingValue = document.getElementById('rating').value;
+
+      fetch(`/craftman/rating?id=${encodeURIComponent(idValue)}&rating=${encodeURIComponent(ratingValue)}`, {
+        method: 'PATCH'
+      })
+        .then(response => response.text())
+        .then(text => {
+          console.log(text);
+        })
+        .catch(err => {
+          console.error('Error:', err);
+        });
+    }
+  </script>
+</body>
+
+</html>

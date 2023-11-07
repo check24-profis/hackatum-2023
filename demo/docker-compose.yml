@@ -1,0 +1,20 @@
+version: '0.0'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SERVER_PORT: ${SERVER_PORT}
+      DB_HOSTNAME: ${DB_HOSTNAME}
+      DB_DATABASE_NAME: ${DB_DATABASE_NAME}
+    ports:
+      - 3000:${SERVER_PORT}
+  postgres:
+    image: postgres:14.9
+    environment:
+      POSTGRES_DB: ${DB_DATABASE_NAME}
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - 5432:5432
