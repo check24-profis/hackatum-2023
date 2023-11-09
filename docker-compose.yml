@@ -7,9 +7,5 @@ services:
       dockerfile: Dockerfile
     environment:
       SERVER_PORT: ${SERVER_PORT}
-      DB_HOSTNAME: ${DB_HOSTNAME}
-      DB_DATABASE_NAME: ${DB_DATABASE_NAME}
     ports:
-      - 8080:${SERVER_PORT}
-  postgres:
-    image: postgres
+      - 3000:${SERVER_PORT}
