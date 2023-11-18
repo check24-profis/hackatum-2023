@@ -76,7 +76,7 @@
             </div>
             <div class="flex flex-row items-center gap-1">
                 <span class="material-symbols-rounded text-lg">location_on</span>
-                <span class="text-sm">{craftsman.distance} km entfernt</span>
+                <span class="text-sm">{Math.round(craftsman.distance * 10) / 10} km entfernt</span>
             </div>
         </div>
     {:else}
