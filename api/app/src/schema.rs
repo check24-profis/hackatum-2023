@@ -18,6 +18,7 @@ diesel::table! {
         profile_id -> Int4,
         profile_picture_score -> Float8,
         profile_description_score -> Float8,
+        profile_score -> Nullable<Float8>,
     }
 }
 
