@@ -1,15 +1,17 @@
 use crate::buisiness_logic::get_top_20_craftsmen;
 use crate::controller::{echo, getCraftsmen, hello};
 use crate::model::service_provider_profile::ServiceProviderProfile;
-use diesel::pg::PgConnection; // Import controller functions
-                              //use crate::schema::quality_factor_score::dsl::quality_factor_score;
+use diesel::pg::PgConnection;
+use serde::{Deserialize, Serialize}; // Import controller functions
+                                     //use crate::schema::quality_factor_score::dsl::quality_factor_score;
 use crate::model::NewQualityFactorScore::NewQualityFactorScore;
 use crate::schema::quality_factor_score::dsl::*;
+use crate::schema::quality_factor_score::dsl::*;
+use crate::schema::service_provider_profile::dsl::*;
 use actix_web::{web, HttpResponse, Responder};
 use diesel::prelude::*;
 use diesel::r2d2::ConnectionManager;
 use diesel::r2d2::Pool;
-use serde::{Deserialize, Serialize};
 
 type DbPool = Pool<ConnectionManager<PgConnection>>;
 
@@ -46,14 +48,30 @@ async fn index(
     Ok(HttpResponse::Ok().json(updatedScore))
 }
 
+#[derive(Debug, Serialize)]
+pub struct Updated {
+    // At least one of the attributes should be defined
+    maxDrivingDistance: i32,
+    profilePictureScore: f64,
+    profileDescriptionScore: f64,
+}
+
+#[derive(Debug, Serialize)]
+struct PatchResponse {
+    id: i32,
+    updated: Updated,
+}
+
 pub fn updateCraftman(
     conn: &mut PgConnection,
     craftman_id: web::Path<i32>,
     req_body: web::Json<PatchRequest>,
-) -> NewQualityFactorScore {
+) -> PatchResponse {
     // TODO
     // implement
 
+    // if maxDrivingDistance.is_none() && profilePictureScore.is_none() && profileDescriptionScore.is_none() {
+    //    HttpResponse::InternalServerError().body("At least one updated value must be specified")
     let PatchRequest {
         maxDrivingDistance,
         profilePictureScore,
@@ -61,14 +79,34 @@ pub fn updateCraftman(
     } = req_body.0;
 
     let craftman_id = craftman_id.into_inner();
-    // if maxDrivingDistance.is_none() && profilePictureScore.is_none() && profileDescriptionScore.is_none() {
-    //    HttpResponse::InternalServerError().body("At least one updated value must be specified")
-    let updatedScore = diesel::update(quality_factor_score.filter(profile_id.eq(1)))
-        .set(profile_picture_score.eq(1.0))
-        .get_result(conn)
-        .expect("Error updating score");
 
-    updatedScore
+    let updatedScore: NewQualityFactorScore =
+        diesel::update(quality_factor_score.filter(profile_id.eq(&craftman_id)))
+            .set((
+                profile_picture_score.eq(profilePictureScore),
+                profile_description_score.eq(profileDescriptionScore),
+                profile_score.eq(0.4 * profilePictureScore + 0.6 * profileDescriptionScore),
+            ))
+            .get_result(conn)
+            .expect("Error updating score");
+
+    let updatedCraftsman: ServiceProviderProfile =
+        diesel::update(service_provider_profile.filter(id.eq(&craftman_id)))
+            .set(max_driving_distance.eq(maxDrivingDistance))
+            .get_result(conn)
+            .expect("Error updating craftsman");
+
+    let updated = Updated {
+        maxDrivingDistance: updatedCraftsman.max_driving_distance.unwrap(),
+        profilePictureScore: updatedScore.profile_picture_score,
+        profileDescriptionScore: updatedScore.profile_description_score,
+    };
+    let patchResponse = PatchResponse {
+        id: craftman_id,
+        updated: updated,
+    };
+
+    patchResponse
 }
 
 #[derive(Deserialize)]

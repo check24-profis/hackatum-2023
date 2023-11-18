@@ -8,7 +8,7 @@
 </script>
 
 <h1 class="text-2xl"><b>Handwerker</b> - Profis in Ihrer Nähe</h1>
-<span class="text-[#008300]">Kostenlos Angebote innerhalb weniger Stunden erhalten.</span>
+<span class="text-[#008300]">Kostenlos Angebote innerhalb weniger Sekunden erhalten.</span>
 
 <div class="flex flex-row items-center gap-2">
     <span class="material-symbols-rounded text-24-blue">done</span> Professionelle Handwerkerleistungen für Ihr Projekt
@@ -34,7 +34,7 @@
     </Textfield>
 
     <div class="w-full flex justify-center">
-        <Button touch variant="raised" class="mt-2 p-5 w-40">
+        <Button touch variant="raised" class="mt-2 p-5 w-40 rounded-full overflow-hidden">
             <span class="material-symbols-rounded mr-1 text-xl">search</span>
             <Label>Suchen</Label>
         </Button>
