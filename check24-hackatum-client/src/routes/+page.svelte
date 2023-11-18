@@ -27,6 +27,7 @@
         label="Ihre PLZ"
         class="w-full"
         required
+        input$maxlength="10"
         bind:value={plz} 
     >
         <span class="material-symbols-rounded ml-[16px] mr-[8px] text-xl" slot="leadingIcon">home_pin</span>
