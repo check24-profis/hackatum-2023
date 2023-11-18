@@ -5,13 +5,14 @@ use crate::{
     model::service_provider_profile::ServiceProviderProfile, schema::postcode::postal_code,
 };
 use diesel::{ExpressionMethods, PgConnection, QueryDsl, RunQueryDsl};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct CraftmanResponse {
     id: i32,
     name: String,
     rankingScore: f64,
+    distance: f64,
 }
 
 // has to be in radians
@@ -73,6 +74,7 @@ pub fn get_top_20_craftsmen(
                 c.last_name.as_ref().unwrap()
             ),
             rankingScore: c.calculated_score(postcode_struct.lon, postcode_struct.lat, connection),
+            distance: c.calculate_distance(postcode_struct.lon, postcode_struct.lat),
         })
         .collect();
 
