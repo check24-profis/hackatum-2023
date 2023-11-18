@@ -1,15 +1,17 @@
+use crate::buisiness_logic::get_top_20_craftsmen;
+use crate::controller::{echo, getCraftsmen, hello};
+use crate::model::service_provider_profile::ServiceProviderProfile;
 use diesel::pg::PgConnection;
-use crate::controller::{getCraftsmen}; // Import controller functions
-//use crate::schema::quality_factor_score::dsl::quality_factor_score;
-use actix_web::{web, HttpResponse, Responder};
-use serde::{Serialize, Deserialize};
-use diesel::r2d2::ConnectionManager;
-use diesel::r2d2::Pool;
+use serde::{Deserialize, Serialize}; // Import controller functions
+                                     //use crate::schema::quality_factor_score::dsl::quality_factor_score;
+use crate::model::NewQualityFactorScore::NewQualityFactorScore;
+use crate::schema::quality_factor_score::dsl::*;
 use crate::schema::quality_factor_score::dsl::*;
 use crate::schema::service_provider_profile::dsl::*;
-use crate::model::NewQualityFactorScore::NewQualityFactorScore;
-use crate::model::service_provider_profile::ServiceProviderProfile;
+use actix_web::{web, HttpResponse, Responder};
 use diesel::prelude::*;
+use diesel::r2d2::ConnectionManager;
+use diesel::r2d2::Pool;
 
 type DbPool = Pool<ConnectionManager<PgConnection>>;
 
@@ -86,12 +88,12 @@ pub fn updateCraftman(conn: &mut PgConnection, craftman_id: web::Path<i32>, req_
     let craftsman: ServiceProviderProfile; 
 
     if maxDrivingDistance.is_some() {
-        craftsman = diesel::update(service_provider_profile.filter(id.eq(&(craftman_id as i64))))
+        craftsman = diesel::update(service_provider_profile.filter(id.eq(&craftman_id)))
         .set(max_driving_distance.eq(maxDrivingDistance.unwrap()))   
         .get_result(conn)
         .expect("Error updating craftsman");
     } else {
-        craftsman = service_provider_profile.filter(id.eq(&(craftman_id as i64))).first(conn).expect("Error loading craftsman");
+        craftsman = service_provider_profile.filter(id.eq(&craftman_id)).first(conn).expect("Error loading craftsman");
     }
     if profileDescriptionScore.is_none() && profilePictureScore.is_none() {
         score = quality_factor_score.filter(profile_id.eq(&craftman_id)).first(conn).expect("Error loading score")
@@ -121,5 +123,21 @@ pub fn updateCraftman(conn: &mut PgConnection, craftman_id: web::Path<i32>, req_
     };
 
     patchResponse
+}
 
+#[derive(Deserialize)]
+pub struct PostalCodeQuery {
+    postalcode: String,
+}
+
+pub async fn get_top20_craftmen(
+    pool: web::Data<DbPool>,
+    postal_code_parameter: web::Query<PostalCodeQuery>,
+) -> actix_web::Result<impl Responder> {
+    // So, it should be called within the `web::block` closure, as well.
+    let mut conn = pool.get().expect("couldn't get db connection from pool");
+    let postal_code = &postal_code_parameter.postalcode;
+
+    let toptwenty = get_top_20_craftsmen(postal_code, &mut conn);
+    Ok(web::Json(toptwenty))
 }
