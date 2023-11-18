@@ -10,18 +10,20 @@ pub async fn echo(req_body: String) -> impl Responder {
 }
 
 pub async fn getCraftsmen(req_body: String) -> impl Responder {
-
     // TODO
     // fetch from database
     let result = vec![
         String::from("Hello"),
         String::from("World"),
-        String::from("!")
+        String::from("!"),
     ];
 
     // Serialize the result to JSON
     match serde_json::to_string(&result) {
-        Ok(json_result) => HttpResponse::Ok().content_type("application/json").body(json_result),
+        Ok(json_result) => HttpResponse::Ok()
+            .content_type("application/json")
+            .body(json_result),
         Err(_) => HttpResponse::InternalServerError().finish(), // Handle serialization error
     }
 }
+
