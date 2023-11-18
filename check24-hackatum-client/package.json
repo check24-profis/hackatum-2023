@@ -5,15 +5,20 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"prepare": "smui-theme compile static/styles/smui.css -i src/theme"
 	},
 	"devDependencies": {
+		"@smui/button": "^7.0.0-beta.15",
+		"@smui/circular-progress": "^7.0.0-beta.15",
+		"@smui/textfield": "^7.0.0-beta.15",
 		"@smui/top-app-bar": "^7.0.0-beta.15",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/enhanced-img": "^0.1.4",
 		"@sveltejs/kit": "^1.27.4",
 		"autoprefixer": "^10.4.16",
 		"postcss": "^8.4.31",
+		"smui-theme": "^7.0.0-beta.15",
 		"svelte": "^4.0.5",
 		"tailwindcss": "^3.3.5",
 		"vite": "^4.4.2"
