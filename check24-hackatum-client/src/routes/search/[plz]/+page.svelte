@@ -8,13 +8,15 @@
     let page_counter = 0;
     let loading = false;
 
-    let craftsmen = [
+    /*let craftsmen = [
         {
             name: 'Lustiger Typ',
             rankingScore: 7.5,
             distance: 23.4
         }
-    ];
+    ];*/
+
+    let craftsmen = [];
 
     function load_state_update(state) {
         loading = state;
@@ -26,7 +28,7 @@
         }
     }
 
-    // $: load_craftsmen_wrapper(data.plz, page_counter);
+    $: load_craftsmen_wrapper(data.plz, page_counter);
 </script>
 
 <svelte:head>
