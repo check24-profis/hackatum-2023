@@ -13,9 +13,11 @@ mod controller;
 mod model;
 mod routes;
 mod schema;
+mod updateController;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    
     dotenv().ok(); // Load .env file
 
     let database_url = env::var("DATABASE_URL").expect("DATABASE_URL is not set in .env file");
