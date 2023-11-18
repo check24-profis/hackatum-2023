@@ -23,7 +23,7 @@ diesel::table! {
 
 diesel::table! {
     service_provider_profile (id) {
-        id -> Int8,
+        id -> Int4,
         #[max_length = 255]
         first_name -> Nullable<Varchar>,
         #[max_length = 255]
