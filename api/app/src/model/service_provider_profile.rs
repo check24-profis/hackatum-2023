@@ -60,17 +60,19 @@ impl ServiceProviderProfile {
     pub fn calculate_distance(&self, another_lon: f64, another_lat: f64) -> f64 {
         let lat = match self.lat {
             None => panic!("Cant calculate distance of non initialized craftsman"),
-            Some(lat) => lat,
+            Some(lat) => f64::to_radians(lat),
         };
 
         let lon = match self.lon {
             None => panic!("Cant calculate distance of non initialized craftsman"),
-            Some(lon) => lon,
+            Some(lon) => f64::to_radians(lon),
         };
 
         f64::acos(
-            f64::sin(lat) * f64::sin(another_lat)
-                + f64::cos(lat) * f64::cos(another_lat) * f64::cos(lon - another_lon),
+            f64::sin(lat) * f64::sin(f64::to_radians(another_lat))
+                + f64::cos(lat)
+                    * f64::cos(f64::to_radians(another_lat))
+                    * f64::cos(lon - f64::to_radians(another_lon)),
         ) * 6371 as f64
     }
 }

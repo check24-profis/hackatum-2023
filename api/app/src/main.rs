@@ -13,6 +13,7 @@ mod buisiness_logic;
 mod controller;
 mod model;
 mod routes;
+mod routing;
 mod schema;
 
 #[actix_web::main]

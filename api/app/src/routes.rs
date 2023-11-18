@@ -1,11 +1,11 @@
 use crate::buisiness_logic::{get_top_20_craftsmen, CraftmanResponse};
-use crate::controller::{echo, getCraftsmen, hello};
+use crate::controller::{echo, hello};
 use crate::model::service_provider_profile::ServiceProviderProfile;
+use crate::routing::craftsmen::get_top20_craftmen;
 use diesel::pg::PgConnection;
 use serde::{Deserialize, Serialize}; // Import controller functions
                                      //use crate::schema::quality_factor_score::dsl::quality_factor_score;
 use crate::model::NewQualityFactorScore::NewQualityFactorScore;
-use crate::schema::quality_factor_score::dsl::*;
 use crate::schema::quality_factor_score::dsl::*;
 use crate::schema::service_provider_profile::dsl::*;
 use actix_web::{web, HttpResponse, Responder};
@@ -30,7 +30,7 @@ pub struct PatchRequest {
     profileDescriptionScore: Option<f64>,
 }
 
-async fn index(
+pub async fn index(
     pool: web::Data<DbPool>,
     craftman_id: web::Path<i32>,
     req_body: web::Json<PatchRequest>,
@@ -56,7 +56,7 @@ pub struct Updated {
 }
 
 #[derive(Debug, Serialize)]
-struct PatchResponse {
+pub struct PatchResponse {
     id: i32,
     updated: Updated,
 }
@@ -117,28 +117,4 @@ pub fn updateCraftman(
     };
 
     patchResponse
-}
-
-#[derive(Deserialize)]
-pub struct PostalCodeQuery {
-    postalcode: String,
-    page: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Check24Response {
-    data: Vec<CraftmanResponse>,
-}
-
-pub async fn get_top20_craftmen(
-    pool: web::Data<DbPool>,
-    postal_code_parameter: web::Query<PostalCodeQuery>,
-) -> actix_web::Result<impl Responder> {
-    // So, it should be called within the `web::block` closure, as well.
-    let mut conn = pool.get().expect("couldn't get db connection from pool");
-    let postal_code = &postal_code_parameter.postalcode;
-
-    let toptwenty = get_top_20_craftsmen(postal_code, &mut conn);
-    let response = Check24Response { data: toptwenty };
-    Ok(web::Json(response))
 }
