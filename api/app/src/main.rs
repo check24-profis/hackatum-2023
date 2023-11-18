@@ -6,6 +6,7 @@ use diesel::r2d2::Pool;
 use crate::routes::configure_routes;
 use actix_web::{web, App, HttpServer};
 
+mod buisiness_logic;
 mod controller;
 mod model;
 mod routes;

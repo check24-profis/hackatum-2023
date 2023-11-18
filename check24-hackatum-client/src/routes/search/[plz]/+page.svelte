@@ -1,128 +1,122 @@
-<!-- FILEPATH: /home/dominik/Documents/Studium/HackaTUM2023/hackatum-2023/check24-hackatum-client/src/routes/search/+page.svelte -->
-
 <script>
-  // Dummy Craftsmen data
-  export let data;
+    import Button from '@smui/button';
+    import CircularProgress from '@smui/circular-progress';
+    import { Label } from '@smui/common';
 
-  let craftsmen = [
-    {
-      name: 'Malerbetrieb Maier',
-      stars: 5,
-      amount_ratings: 42,
-      number_rating: 6.3,
-      is_new: false,
-      distance: 2.5,
-      orders: 10,
-      first_visit_free: false,
-      happiness_garantee: true,
-    },
-    {
-      name: 'Jörg Petersson Malerbetrieb',
-      stars: 3,
-      amount_ratings: 12,
-      number_rating: 6.2,
-      is_new: true,
-      distance: 7.3,
-      orders: 0,
-      first_visit_free: true,
-      happiness_garantee: false,
-    },
-  ];
+    export let data;
+    let loading = false;
 
-  function load_more_craftsmen() {
-    // for button
-  }
+    // Dummy Craftsmen data
+    let craftsmen = [
+        {
+            name: "Bouncy Bob",
+            rankingScore: 8
+        },
+        {
+            name: "Bobby Bounce",
+            rankingScore: 7
+        },
+        {
+            name: "Peter Lustig",
+            rankingScore: 6
+        },
+        {
+            name: "Peter Lustig",
+            rankingScore: 5.5
+        },
+        {
+            name: "Peter Lustig",
+            rankingScore: 4.4
+        },
+        {
+            name: "Peter Lustig",
+            rankingScore: 3.3
+        },
+        {
+            name: "Peter Lustig",
+            rankingScore: 2
+        },
+        {
+            name: "Ladadi Ladadei",
+            rankingScore: 0
+        },
+    ];
 
-  function number_rating_to_text(number_rating) {
-    switch (number_rating) {
-      case 7:
-        return 'hervorragend';
-      case 6:
-        return 'sehr gut';
-      case 5:
-        return 'gut';
-      case 4:
-        return 'befriedigend';
-      case 3:
-        return 'ausreichend';
-      case 2:
-        return 'mangelhaft';
-      case 1:
-        return 'ungenügend';
-      default:
-        return 'neu';
+    function load_more_craftsmen() {
+        // for button
     }
-  }
 </script>
 
-<main>
-  <h1><b>Handwerker</b> - Profis in Ihrer Nähe {data.plz}</h1>
-  
-  <header style="display: flex; justify-content: space-between;">
-      <div style="display: flex;">
-      <button>Anfrage stornieren</button>
-      <button>Details anzeigen</button>
-    </div>
-  </header>
+<svelte:head>
+    <style>
+        body {
+            background: transparent;
+        }
+        body:before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: url('/img/bg.png?enhanced');
+            background-size: cover;
+            z-index: -1;
+            filter: blur(10px);
+            transform: scale(1.1);
+        }
+    </style>
+</svelte:head>
 
-  <header>
-    <h1><b>Zu Ihrer Anfrage passende Profis</b></h1>
-    <p>{craftsmen.length} Ergebnisse</p>
-  </header>
+<h1 
+    class="text-2xl text-white font-bold" 
+    style="filter: drop-shadow(0px 0px 12px #063773)">Zu Ihrer Postleitzahl ({data.plz}) passende Profis
+</h1>
+<!-- TODO: show number of *actual* results -->
+{#if !loading}
+    <span 
+        class="text-base text-white mb-3 block drop-shadow-md" 
+        style="filter: drop-shadow(0px 0px 10px #063773)">{craftsmen.length} Ergebnis{craftsmen.length > 1 ? "se" : ""}
+    </span>
+{/if}
 
-  {#each craftsmen as craftsman}
-    <div>
-      <img src="round-picture.jpg" alt="Craftsman Picture">
-      <h2><b>{craftsman.name}</b></h2>
-
-      <div>
-        {#if craftsman.is_new}
-          <p>neu</p>
-          <p>bei CHECK24</p>
-        {:else}
-          <div>
-            <div class="star-ratings">
-              <div class="fill-ratings" style="width: 50%;">
-                <span>★★★★★</span>
-              </div>
-              <div class="empty-ratings">
-                <span>★★★★★</span>
-              </div>
+<div class="flex flex-col gap-2">
+    {#each craftsmen as craftsman}
+        <div class="flex flex-col gap-1 bg-white rounded-md p-2">
+            <div class="flex flex-col md:flex-row gap-1 sm:max-md:justify-center md:items-center">
+                <div class="inline-flex flex-row gap-1 items-center">
+                    <span class="py-1 px-2 bg-24-blue text-white rounded-md mr-1">{craftsman.rankingScore.toFixed(1)}</span>
+                    
+                    <span>{craftsman.name}</span>
+                </div>
+        
+                <div class="inline-grid w-min" style="--rating: {craftsman.rankingScore / 0.08}%;">
+                    <div class="text-gray-400 col-[1] row-[1] w-full text-lg">
+                        <span>★★★★★</span>
+                    </div>
+                    <div class="text-24-yellow col-[1] row-[1] overflow-hidden w-[--rating] text-lg">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
             </div>
-          </div>
-          <p>{craftsman.amount_ratings}</p>
-          <p>{craftsman.number_rating}</p>
-          <p>{number_rating_to_text(craftsmen.number_rating)}</p>
-          {#if craftsman.happiness_garantee}
-            <p>HAPPINESS GARANTIE</p>
-          {/if}
+            <!--<div class="flex flex-row items-center gap-1">
+                <span class="material-symbols-rounded text-lg">location_on</span>
+                <span class="text-sm">{craftsman.distance} km entfernt</span>
+            </div>-->
+        </div>
+    {:else}
+        {#if loading}
+        <div class="flex flex-row justify-center mt-5">
+            <CircularProgress style="height: 64px; width: 64px;" indeterminate />
+        </div>    
+        {:else}
+            <span class="bg-white rounded-md p-2 w-max">Es wurden leider keine Profis für die PLZ "{data.plz}" gefunden.</span>
         {/if}
-      </div>
-
-      <span class="material-symbols-rounded"> location_on </span>
-
-      <p>{craftsman.distance} km entfernt</p>
-
-      <div>
-      <span class="material-symbols-rounded">
-        license
-      </span>
-      {#if craftsman.is_new}
-        <p>kürzlich gebucht</p>
-      {:else}
-        <p>{craftsman.orders} Buchungen</p>
-      {/if}
-      </div>
-       
-      <div>
-      {#if craftsman.first_visit_free}
-        <p>Kostenlose Besichtigung</p>
-      {/if}
-      </div>
-
+    {/each}
+</div>
+<!-- TODO: Only show if more pages available -->
+{#if craftsmen.length > 0}
+    <div class="flex justify-center">
+        <Button touch variant="raised" class="bg-24-blue mt-3 p-5 rounded-full overflow-hidden" on:click={load_more_craftsmen}>
+            <Label class="text-sm">Mehr anzeigen</Label>
+        </Button>
     </div>
-  {/each}
-
-  <button on:click={load_more_craftsmen}>mehr anzeigen</button>
-</main>
-
+{/if}
