@@ -1,4 +1,4 @@
-FROM postgres:14.9
+FROM postgres:latest
 
 ENV POSTGRES_DB=check24
 ENV POSTGRES_HOST_AUTH_METHOD=trust
