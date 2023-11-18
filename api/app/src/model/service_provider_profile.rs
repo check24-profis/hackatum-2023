@@ -1,4 +1,3 @@
-use chrono::NaiveDateTime;
 use diesel::prelude::{Insertable, Queryable};
 
 #[derive(Debug, Queryable, Insertable)]
@@ -15,3 +14,4 @@ pub struct ServiceProviderProfile {
     pub lat: f64,
     pub max_driving_distance: i32,
 }
+
