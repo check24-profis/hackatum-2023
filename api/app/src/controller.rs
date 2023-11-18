@@ -1,5 +1,10 @@
 use actix_web::{web, HttpResponse, Responder};
 use serde::{Serialize, Deserialize};
+// use crate::model::quality_factor_score::*; 
+use crate::schema::quality_factor_score;
+//use crate::schema::quality_factor_score::dsl::quality_factor_score;
+
+
 
 pub async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello world!")
@@ -36,15 +41,7 @@ pub struct PatchRequest {
   profileDescriptionScore: f64
 }
 
-pub async fn updateCraftman(craftman_id: web::Path<String>, req_body: web::Json<PatchRequest>) -> impl Responder {
-    // TODO
-    // implement
+
+
 
     
-    // For testing only
-    // TODO: delete
-    println!("called");
-    let response = format!("You passed the id: {}", craftman_id);
-
-    HttpResponse::Ok().body(response)
-}

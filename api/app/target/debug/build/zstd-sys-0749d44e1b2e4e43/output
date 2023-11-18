@@ -112,90 +112,87 @@ running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 fse_compress.c
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\huf_compress.o" "-c" "zstd/lib/compress\\huf_compress.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 hist.c
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\huf_compress.o" "-c" "zstd/lib/compress\\huf_compress.c"
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_compress.o" "-c" "zstd/lib/compress\\zstd_compress.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 huf_compress.c
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_compress_literals.o" "-c" "zstd/lib/compress\\zstd_compress_literals.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstd_compress.c
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_compress_literals.o" "-c" "zstd/lib/compress\\zstd_compress_literals.c"
+cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
+
+zstd_compress_literals.c
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_compress_sequences.o" "-c" "zstd/lib/compress\\zstd_compress_sequences.c"
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_compress_superblock.o" "-c" "zstd/lib/compress\\zstd_compress_superblock.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
-zstd_compress_literals.c
-cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
-
 zstd_compress_sequences.c
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_double_fast.o" "-c" "zstd/lib/compress\\zstd_double_fast.c"
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_fast.o" "-c" "zstd/lib/compress\\zstd_fast.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstd_compress_superblock.c
-cargo:warning=cl : Befehlszeile warning D9002 : cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.Unbekannte Option "-fvisibility=hidden" wird ignoriert.
-
-cargo:warning=
-
-zstd_double_fast.c
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_double_fast.o" "-c" "zstd/lib/compress\\zstd_double_fast.c"
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_fast.o" "-c" "zstd/lib/compress\\zstd_fast.c"
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_lazy.o" "-c" "zstd/lib/compress\\zstd_lazy.c"
+cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
+
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_ldm.o" "-c" "zstd/lib/compress\\zstd_ldm.c"
+zstd_double_fast.c
+cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
+
 zstd_fast.c
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_opt.o" "-c" "zstd/lib/compress\\zstd_opt.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstd_lazy.c
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_ldm.o" "-c" "zstd/lib/compress\\zstd_ldm.c"
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstd_opt.o" "-c" "zstd/lib/compress\\zstd_opt.c"
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstdmt_compress.o" "-c" "zstd/lib/compress\\zstdmt_compress.c"
-cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.cl : Befehlszeile warning D9002 : 
-
-cargo:warning=Unbekannte Option "-fvisibility=hidden" wird ignoriert.
+cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstd_ldm.c
+cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
+
 zstd_opt.c
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/compress\\zstdmt_compress.o" "-c" "zstd/lib/compress\\zstdmt_compress.c"
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/decompress\\huf_decompress.o" "-c" "zstd/lib/decompress\\huf_decompress.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstdmt_compress.c
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/decompress\\huf_decompress.o" "-c" "zstd/lib/decompress\\huf_decompress.c"
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/decompress\\zstd_ddict.o" "-c" "zstd/lib/decompress\\zstd_ddict.c"
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/decompress\\zstd_decompress.o" "-c" "zstd/lib/decompress\\zstd_decompress.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 huf_decompress.c
-cargo:warning=cl : Befehlszeile warning D9002 : cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.Unbekannte Option "-fvisibility=hidden" wird ignoriert.
-
-cargo:warning=
-
-zstd_decompress.c
-zstd_ddict.c
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/decompress\\zstd_ddict.o" "-c" "zstd/lib/decompress\\zstd_ddict.c"
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/decompress\\zstd_decompress.o" "-c" "zstd/lib/decompress\\zstd_decompress.c"
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/decompress\\zstd_decompress_block.o" "-c" "zstd/lib/decompress\\zstd_decompress_block.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
+zstd_ddict.c
+cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.cl : Befehlszeile warning D9002 : 
+
 zstd_decompress_block.c
+cargo:warning=Unbekannte Option "-fvisibility=hidden" wird ignoriert.
+
+zstd_decompress.c
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/dictBuilder\\cover.o" "-c" "zstd/lib/dictBuilder\\cover.c"
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/dictBuilder\\divsufsort.o" "-c" "zstd/lib/dictBuilder\\divsufsort.c"
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/dictBuilder\\fastcover.o" "-c" "zstd/lib/dictBuilder\\fastcover.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 cover.c
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 divsufsort.c
-cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
-
-fastcover.c
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/dictBuilder\\fastcover.o" "-c" "zstd/lib/dictBuilder\\fastcover.c"
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/dictBuilder\\zdict.o" "-c" "zstd/lib/dictBuilder\\zdict.c"
 0
 exit code: 0
@@ -210,44 +207,47 @@ exit code: 0
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v01.o" "-c" "zstd/lib/legacy\\zstd_v01.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
-zdict.c
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v02.o" "-c" "zstd/lib/legacy\\zstd_v02.c"
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v03.o" "-c" "zstd/lib/legacy\\zstd_v03.c"
+fastcover.c
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
-zstd_v01.c
+zdict.c
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v02.o" "-c" "zstd/lib/legacy\\zstd_v02.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstd_v02.c
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
+zstd_v01.c
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v03.o" "-c" "zstd/lib/legacy\\zstd_v03.c"
+cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
+
 zstd_v03.c
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v04.o" "-c" "zstd/lib/legacy\\zstd_v04.c"
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v05.o" "-c" "zstd/lib/legacy\\zstd_v05.c"
+running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v06.o" "-c" "zstd/lib/legacy\\zstd_v06.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstd_v04.c
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstd_v05.c
-running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v06.o" "-c" "zstd/lib/legacy\\zstd_v06.c"
 cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstd_v06.c
 running: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe" "-nologo" "-MD" "-Z7" "-Brepro" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-fvisibility=hidden" "-DZSTD_DISABLE_ASM=" "-DZSTD_LIB_DEPRECATED=0" "-DXXH_PRIVATE_API=" "-DZSTDLIB_VISIBILITY=" "-DZDICTLIB_VISIBILITY=" "-DZSTDERRORLIB_VISIBILITY=" "-DZSTD_LEGACY_SUPPORT=1" "-FoC:\\Users\\mhoff\\Desktop\\hackTUM-2023\\hackatum-2023\\api\\app\\target\\debug\\build\\zstd-sys-0749d44e1b2e4e43\\out\\zstd/lib/legacy\\zstd_v07.o" "-c" "zstd/lib/legacy\\zstd_v07.c"
-cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: 0
+exit code: cargo:warning=cl : Befehlszeile warning D9002 : Unbekannte Option "-fvisibility=hidden" wird ignoriert.
 
 zstd_v07.c
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
-exit code: 0
+0
 exit code: 0
 exit code: 0
 exit code: 0

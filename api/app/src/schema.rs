@@ -37,6 +37,18 @@ diesel::table! {
         lon -> Nullable<Float8>,
         lat -> Nullable<Float8>,
         max_driving_distance -> Nullable<Int4>,
+        max_lon_a -> Nullable<Float8>,
+        max_lon_b -> Nullable<Float8>,
+        max_lon_c -> Nullable<Float8>,
+        min_lon_a -> Nullable<Float8>,
+        min_lon_b -> Nullable<Float8>,
+        min_lon_c -> Nullable<Float8>,
+        max_lat_a -> Nullable<Float8>,
+        max_lat_b -> Nullable<Float8>,
+        max_lat_c -> Nullable<Float8>,
+        min_lat_a -> Nullable<Float8>,
+        min_lat_b -> Nullable<Float8>,
+        min_lat_c -> Nullable<Float8>,
     }
 }
 

@@ -1,3 +1,3 @@
-mod service_provider_profile;
-mod postcode;
-mod quality_factor_score;
+pub mod NewQualityFactorScore;
+pub mod postcode;
+pub mod service_provider_profile;
