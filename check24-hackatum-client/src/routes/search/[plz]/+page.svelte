@@ -24,7 +24,7 @@
 
     async function load_craftsmen_wrapper(plz, page) {
         if(typeof window !== 'undefined') {
-            craftsmen = await fetch_craftsmen(window.location.origin.split(":")[0], plz, page, load_state_update);
+            craftsmen = await fetch_craftsmen(window.location.origin.split(":").slice(0, 2).join(':'), plz, page, load_state_update);
         }
     }
 
