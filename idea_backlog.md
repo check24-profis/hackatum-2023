@@ -1,0 +1,2 @@
+- caching of search results for the most searched for zi codes (dont have insights yet: use zip codes with most inhabitants in Germany as a hueristic): https://www.suche-postleitzahl.org/downloads
+- track search frequency for every zip code to gain user insights and enhance our zip-based caching
