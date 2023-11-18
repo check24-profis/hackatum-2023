@@ -1,5 +1,5 @@
 use diesel::pg::PgConnection;
-use crate::controller::{hello, echo, getCraftsmen}; // Import controller functions
+use crate::controller::{getCraftsmen}; // Import controller functions
 //use crate::schema::quality_factor_score::dsl::quality_factor_score;
 use actix_web::{web, HttpResponse, Responder};
 use serde::{Serialize, Deserialize};
@@ -8,6 +8,7 @@ use diesel::r2d2::Pool;
 use crate::schema::quality_factor_score::dsl::*;
 use crate::schema::service_provider_profile::dsl::*;
 use crate::model::NewQualityFactorScore::NewQualityFactorScore;
+use crate::model::service_provider_profile::ServiceProviderProfile;
 use diesel::prelude::*;
 
 type DbPool = Pool<ConnectionManager<PgConnection>>;
@@ -16,14 +17,7 @@ type DbPool = Pool<ConnectionManager<PgConnection>>;
 
 
 pub fn configure_routes(cfg: &mut web::ServiceConfig) {
-    cfg.service(
-        web::resource("/")
-            .route(web::get().to(hello))
-    )
-    .service(
-        web::resource("/echo")
-            .route(web::post().to(echo))
-    )
+    cfg
     .service(
         web::resource("/craftsmen")
         .route(web::get().to(getCraftsmen))
@@ -40,9 +34,9 @@ pub fn configure_routes(cfg: &mut web::ServiceConfig) {
 #[derive(Debug, Deserialize)]
 pub struct PatchRequest {
   // At least one of the attributes should be defined
-  maxDrivingDistance: i32,
-  profilePictureScore: f64,
-  profileDescriptionScore: f64
+  maxDrivingDistance: Option<i32>,
+  profilePictureScore: Option<f64>,
+  profileDescriptionScore: Option<f64>
 }
 
 async fn index(
@@ -80,12 +74,6 @@ struct PatchResponse {
 }
 
 pub fn updateCraftman(conn: &mut PgConnection, craftman_id: web::Path<i32>, req_body: web::Json<PatchRequest>) -> PatchResponse {
-    // TODO
-    // implement
-
-
-        // if maxDrivingDistance.is_none() && profilePictureScore.is_none() && profileDescriptionScore.is_none() {
-    //    HttpResponse::InternalServerError().body("At least one updated value must be specified")
     let PatchRequest {
         maxDrivingDistance,
         profilePictureScore,
@@ -94,29 +82,44 @@ pub fn updateCraftman(conn: &mut PgConnection, craftman_id: web::Path<i32>, req_
 
     let craftman_id = craftman_id.into_inner();
 
-    let updatedScore = diesel::update(quality_factor_score.filter(profile_id.eq(&craftman_id)))
-    .set((profile_picture_score.eq(profilePictureScore), profile_description_score.eq(profileDescriptionScore), profile_score.eq(0.4 * profile_picture_score + 0.6 * profile_description_score)))
-    .get_result(conn)
-    .expect("Error updating score");
+    let mut score: NewQualityFactorScore;
+    let craftsman: ServiceProviderProfile; 
 
-
-
-    let updatedCraftsman = diesel::update(service_provider_profile.filter(id.eq(&craftman_id)))
-    .set(max_driving_distance.eq(maxDrivingDistance))
-    .get_result(conn)
-    .expect("Error updating craftsman");
-
+    if maxDrivingDistance.is_some() {
+        craftsman = diesel::update(service_provider_profile.filter(id.eq(&(craftman_id as i64))))
+        .set(max_driving_distance.eq(maxDrivingDistance.unwrap()))   
+        .get_result(conn)
+        .expect("Error updating craftsman");
+    } else {
+        craftsman = service_provider_profile.filter(id.eq(&(craftman_id as i64))).first(conn).expect("Error loading craftsman");
+    }
+    if profileDescriptionScore.is_none() && profilePictureScore.is_none() {
+        score = quality_factor_score.filter(profile_id.eq(&craftman_id)).first(conn).expect("Error loading score")
+    }
+    else if profilePictureScore.is_some() {
+        score = diesel::update(quality_factor_score.filter(profile_id.eq(&craftman_id)))
+        .set(profile_picture_score.eq(profilePictureScore.unwrap()))
+        .get_result(conn)
+        .expect("Error updating score");
+    }
+    else { // profileDescriptionScore.is_some()
+        score = diesel::update(quality_factor_score.filter(profile_id.eq(&craftman_id)))
+        .set(profile_description_score.eq(profileDescriptionScore.unwrap()))   
+        .get_result(conn)
+        .expect("Error updating score");
+    }
+    
+   
     let updated = Updated {
-        maxDrivingDistance: updatedCraftsman.max_driving_distance,
-        profilePictureScore: updatedScore.profile_picture_score,
-        profileDescriptionScore: updatedScore.profile_description_score
+        maxDrivingDistance: craftsman.max_driving_distance.unwrap(),
+        profilePictureScore: score.profile_picture_score,
+        profileDescriptionScore: score.profile_description_score
     };
     let patchResponse = PatchResponse {
         id: craftman_id,
-        updated: updated
+        updated: updated,
     };
 
+    patchResponse
 
-
-    updatedScore
 }

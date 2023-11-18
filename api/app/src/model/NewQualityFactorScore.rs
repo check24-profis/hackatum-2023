@@ -10,5 +10,5 @@ pub struct NewQualityFactorScore {
     pub profile_id: i32,
     pub profile_picture_score: f64,
     pub profile_description_score: f64,
-    pub profile_score: f64
+    //pub profile_score: f64
 }

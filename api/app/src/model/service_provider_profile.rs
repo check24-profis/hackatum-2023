@@ -4,7 +4,7 @@ use diesel::{
     ExpressionMethods, PgConnection, QueryDsl,
 };
 
-use super::quality_factor_score::NewQualityFactorScore;
+use super::NewQualityFactorScore::NewQualityFactorScore;
 use crate::schema::quality_factor_score::dsl::*;
 
 #[derive(Debug, Queryable, Insertable)]
