@@ -6,15 +6,7 @@
 
     export let data;
     let page_counter = 0;
-    let loading = false;
-
-    /*let craftsmen = [
-        {
-            name: 'Lustiger Typ',
-            rankingScore: 7.5,
-            distance: 23.4
-        }
-    ];*/
+    let loading = true;
 
     let craftsmen = [];
 
@@ -73,7 +65,7 @@
                     <span>{craftsman.name}</span>
                 </div>
         
-                <div class="inline-grid w-min" style="--rating: {craftsman.rankingScore / 0.08}%;">
+                <div class="inline-grid w-min" style="--rating: {craftsman.rankingScore / 0.05}%;">
                     <div class="text-gray-400 col-[1] row-[1] w-full text-lg">
                         <span>★★★★★</span>
                     </div>
