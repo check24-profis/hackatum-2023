@@ -1,0 +1,25 @@
+{
+	"name": "check24-hackatum-client",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@smui/top-app-bar": "^7.0.0-beta.15",
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/enhanced-img": "^0.1.4",
+		"@sveltejs/kit": "^1.27.4",
+		"autoprefixer": "^10.4.16",
+		"postcss": "^8.4.31",
+		"svelte": "^4.0.5",
+		"tailwindcss": "^3.3.5",
+		"vite": "^4.4.2"
+	},
+	"type": "module",
+	"dependencies": {
+		"material-icons": "^1.13.12"
+	}
+}
