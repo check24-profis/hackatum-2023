@@ -1,5 +1,5 @@
 use actix_web::web;
-use crate::controller::{hello, echo, getCraftsmen}; // Import controller functions
+use crate::controller::{hello, echo, getCraftsmen, updateCraftman}; // Import controller functions
 
 pub fn configure_routes(cfg: &mut web::ServiceConfig) {
     cfg.service(
@@ -11,8 +11,12 @@ pub fn configure_routes(cfg: &mut web::ServiceConfig) {
             .route(web::post().to(echo))
     )
     .service(
-        web::resource("/get")
+        web::resource("/craftsmen")
         .route(web::get().to(getCraftsmen))
+    )
+    .service(
+        web::resource("/craftman/{craftman_id}")
+        .route(web::patch().to(updateCraftman))
     )
     ;
 }
