@@ -1,4 +1,6 @@
 use actix_cors::Cors;
+use routing::routes;
+use routing::routes::configure_routes;
 use std::env;
 
 use diesel::prelude::*;
@@ -6,15 +8,14 @@ use diesel::r2d2::ConnectionManager;
 use diesel::r2d2::Pool;
 use dotenvy::dotenv;
 
-use crate::routes::configure_routes;
 use actix_web::{web, App, HttpServer};
 
 mod buisiness_logic;
 mod controller;
 mod model;
-mod routes;
 mod routing;
 mod schema;
+mod updateController;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

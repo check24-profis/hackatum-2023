@@ -1,7 +1,5 @@
-use crate::buisiness_logic::{get_top_20_craftsmen, CraftmanResponse};
-use crate::controller::{echo, hello};
+use crate::buisiness_logic::get_top_20_craftsmen;
 use crate::model::service_provider_profile::ServiceProviderProfile;
-use crate::routing::craftsmen::get_top20_craftmen;
 use diesel::pg::PgConnection;
 use serde::{Deserialize, Serialize}; // Import controller functions
                                      //use crate::schema::quality_factor_score::dsl::quality_factor_score;
@@ -15,36 +13,12 @@ use diesel::r2d2::Pool;
 
 type DbPool = Pool<ConnectionManager<PgConnection>>;
 
-pub fn configure_routes(cfg: &mut web::ServiceConfig) {
-    cfg.service(web::resource("/").route(web::get().to(hello)))
-        .service(web::resource("/echo").route(web::post().to(echo)))
-        .service(web::resource("/craftmen/{craftman_id}").route(web::patch().to(index)))
-        .service(web::resource("/craftsmen").route(web::get().to(get_top20_craftmen)));
-}
-
 #[derive(Debug, Deserialize)]
 pub struct PatchRequest {
     // At least one of the attributes should be defined
     maxDrivingDistance: Option<i32>,
     profilePictureScore: Option<f64>,
     profileDescriptionScore: Option<f64>,
-}
-
-pub async fn index(
-    pool: web::Data<DbPool>,
-    craftman_id: web::Path<i32>,
-    req_body: web::Json<PatchRequest>,
-) -> actix_web::Result<impl Responder> {
-    let updatedScore = web::block(move || {
-        // So, it should be called within the `web::block` closure, as well.
-        let mut conn = pool.get().expect("couldn't get db connection from pool");
-
-        updateCraftman(&mut conn, craftman_id, req_body)
-    })
-    .await?;
-    //.map_err(error::ErrorInternalServerError)?;
-
-    Ok(HttpResponse::Ok().json(updatedScore))
 }
 
 #[derive(Debug, Serialize)]
@@ -56,16 +30,18 @@ pub struct Updated {
 }
 
 #[derive(Debug, Serialize)]
-pub struct PatchResponse {
+struct PatchResponse {
     id: i32,
     updated: Updated,
 }
 
-pub fn updateCraftman(
-    conn: &mut PgConnection,
+pub async fn updateCraftsman(
+    pool: web::Data<DbPool>,
     craftman_id: web::Path<i32>,
     req_body: web::Json<PatchRequest>,
-) -> PatchResponse {
+) -> actix_web::Result<impl Responder> {
+    let mut conn = pool.get().expect("couldn't get db connection from pool");
+
     let PatchRequest {
         maxDrivingDistance,
         profilePictureScore,
@@ -80,41 +56,41 @@ pub fn updateCraftman(
     if maxDrivingDistance.is_some() {
         craftsman = diesel::update(service_provider_profile.filter(id.eq(&craftman_id)))
             .set(max_driving_distance.eq(maxDrivingDistance.unwrap()))
-            .get_result(conn)
+            .get_result(&mut conn)
             .expect("Error updating craftsman");
     } else {
         craftsman = service_provider_profile
             .filter(id.eq(&craftman_id))
-            .first(conn)
+            .first(&mut conn)
             .expect("Error loading craftsman");
     }
     if profileDescriptionScore.is_none() && profilePictureScore.is_none() {
         score = quality_factor_score
             .filter(profile_id.eq(&craftman_id))
-            .first(conn)
+            .first(&mut conn)
             .expect("Error loading score")
     } else if profilePictureScore.is_some() {
         score = diesel::update(quality_factor_score.filter(profile_id.eq(&craftman_id)))
             .set(profile_picture_score.eq(profilePictureScore.unwrap()))
-            .get_result(conn)
+            .get_result(&mut conn)
             .expect("Error updating score");
     } else {
         // profileDescriptionScore.is_some()
         score = diesel::update(quality_factor_score.filter(profile_id.eq(&craftman_id)))
             .set(profile_description_score.eq(profileDescriptionScore.unwrap()))
-            .get_result(conn)
+            .get_result(&mut conn)
             .expect("Error updating score");
     }
 
     let updated = Updated {
-        maxDrivingDistance: craftsman.max_driving_distance.unwrap(),
-        profilePictureScore: score.profile_picture_score,
-        profileDescriptionScore: score.profile_description_score,
+        maxDrivingDistance: maxDrivingDistance.unwrap(),
+        profilePictureScore: profilePictureScore.unwrap(),
+        profileDescriptionScore: profileDescriptionScore.unwrap(),
     };
-    let patchResponse = PatchResponse {
+    let response = PatchResponse {
         id: craftman_id,
         updated: updated,
     };
-
-    patchResponse
+    Ok(web::Json(response))
 }
+
