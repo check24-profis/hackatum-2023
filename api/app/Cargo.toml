@@ -12,6 +12,7 @@ serde_json = "1.0"
 diesel = { version = "2.1.0", features = ["postgres", "chrono", "r2d2"] }
 dotenvy = "0.15"
 chrono = "0.4.31"
+actix-cors = "0.6.4"
 
 [build]
 rustflags = ["-L", "path/to/postgresql/lib", "-l", "pq"]

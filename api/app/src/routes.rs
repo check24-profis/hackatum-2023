@@ -1,4 +1,4 @@
-use crate::buisiness_logic::get_top_20_craftsmen;
+use crate::buisiness_logic::{get_top_20_craftsmen, CraftmanResponse};
 use crate::controller::{echo, getCraftsmen, hello};
 use crate::model::service_provider_profile::ServiceProviderProfile;
 use diesel::pg::PgConnection;
@@ -18,9 +18,8 @@ type DbPool = Pool<ConnectionManager<PgConnection>>;
 pub fn configure_routes(cfg: &mut web::ServiceConfig) {
     cfg.service(web::resource("/").route(web::get().to(hello)))
         .service(web::resource("/echo").route(web::post().to(echo)))
-        .service(web::resource("/craftsmen").route(web::get().to(getCraftsmen)))
-        .service(web::resource("/craftman/{craftman_id}").route(web::patch().to(index)))
-        .service(web::resource("/craftsman").route(web::get().to(get_top20_craftmen)));
+        .service(web::resource("/craftmen/{craftman_id}").route(web::patch().to(index)))
+        .service(web::resource("/craftsmen").route(web::get().to(get_top20_craftmen)));
 }
 
 #[derive(Debug, Deserialize)]
@@ -123,6 +122,12 @@ pub fn updateCraftman(
 #[derive(Deserialize)]
 pub struct PostalCodeQuery {
     postalcode: String,
+    page: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Check24Response {
+    data: Vec<CraftmanResponse>,
 }
 
 pub async fn get_top20_craftmen(
@@ -134,6 +139,6 @@ pub async fn get_top20_craftmen(
     let postal_code = &postal_code_parameter.postalcode;
 
     let toptwenty = get_top_20_craftsmen(postal_code, &mut conn);
-    Ok(web::Json(toptwenty))
+    let response = Check24Response { data: toptwenty };
+    Ok(web::Json(response))
 }
-

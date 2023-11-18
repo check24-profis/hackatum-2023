@@ -1,3 +1,4 @@
+use actix_cors::Cors;
 use std::env;
 
 use diesel::prelude::*;
@@ -25,7 +26,10 @@ async fn main() -> std::io::Result<()> {
         .expect("Failed to create pool");
 
     HttpServer::new(move || {
+        let cors = Cors::permissive();
+
         App::new()
+            .wrap(cors)
             .app_data(web::Data::new(pool.clone()))
             .configure(configure_routes)
     })

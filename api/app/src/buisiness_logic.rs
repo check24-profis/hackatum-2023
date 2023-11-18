@@ -5,9 +5,9 @@ use crate::{
     model::service_provider_profile::ServiceProviderProfile, schema::postcode::postal_code,
 };
 use diesel::{ExpressionMethods, PgConnection, QueryDsl, RunQueryDsl};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct CraftmanResponse {
     id: i32,
     name: String,
