@@ -1,6 +1,6 @@
 use crate::buisiness_logic::get_top_20_craftsmen;
 use crate::controller::{echo, getCraftsmen, hello};
-use crate::updateController::{updateCraftsman};
+use crate::updateController::{update_craftsman};
 use crate::model::service_provider_profile::ServiceProviderProfile;
 use diesel::pg::PgConnection;
 use serde::{Deserialize, Serialize}; // Import controller functions
@@ -26,7 +26,7 @@ pub fn configure_routes(cfg: &mut web::ServiceConfig) {
     )
     .service(
         web::resource("/craftman/{craftman_id}")
-        .route(web::patch().to(updateCraftsman))
+        .route(web::patch().to(update_craftsman))
     )
     ;
 }
