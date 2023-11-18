@@ -3,13 +3,19 @@
 </script>
 
 <!-- Navbar -->
-<div class="bg-24-blue text-white p-4 flex justify-center">
-    <img src="/img/craft24_logo.svg"
-        alt="Craft24 Logo"
-        class="h-6">
-</div>
+<nav class="bg-24-blue text-white p-3 m-3 lg:p-4 lg:m-4 rounded-full flex justify-center">
+    <a href="/">
+        <img src="/img/craft24_logo.svg"
+            alt="Craft24 Logo"
+            class="h-6">
+    </a>
+</nav>
 
 <!-- Content -->
-<div class="p-4">
+<main class="py-6 px-6 lg:px-[15rem] flex-1">
     <slot></slot>
-</div>
+</main>
+
+<footer class="bg-gray-300 p-4 text-xs mt-auto">
+    © 2023 CRAFT24 Vergleichsportal Profis GmbH
+</footer>
