@@ -7,6 +7,10 @@
     let plz = "";
 </script>
 
+<svelte:head>
+    <link rel="preload" as="image" href="/img/bg.png?enhanced" />
+</svelte:head>
+
 <h1 class="text-2xl"><b>Handwerker</b> - Profis in Ihrer Nähe</h1>
 <span class="text-[#008300]">Kostenlos Angebote innerhalb weniger Sekunden erhalten.</span>
 
