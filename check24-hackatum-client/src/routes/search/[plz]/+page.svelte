@@ -3,6 +3,8 @@
     import CircularProgress from '@smui/circular-progress';
     import { Label } from '@smui/common';
     import { fetch_craftsmen } from '$lib/api_utils.js';
+    import { admin_mode } from '$lib/stores.js';
+    import { goto } from '$app/navigation';
 
     export let data;
     let sort_by = 'default';
@@ -22,7 +24,6 @@
     }
 
     $: load_craftsmen_wrapper(data.plz, page_counter);
-    $: console.log(page_counter);
     $: sort_by, page_counter=0;
 </script>
 
@@ -46,13 +47,13 @@
     </style>
 </svelte:head>
 
-<div class="flex flex-row items-center justify-between">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between">
     <h1 
         class="text-2xl text-white font-bold" 
         style="filter: drop-shadow(0px 0px 12px #063773)">Zu Ihrer Postleitzahl ({data.plz}) passende Profis
     </h1>
 
-    <div> 
+    <div class="mt-3 md:mt-0">
         <label for="sort" class="text-white mr-2 font-bold" style="filter: drop-shadow(0px 0px 12px #063773)"> Sortieren nach </label>
         <select class="text-white bg-24-blue rounded-md p-[0.35rem]" bind:value={sort_by}>
             <option value="default">Standard</option>
@@ -72,7 +73,7 @@
 
 <div class="flex flex-col gap-2">
     {#each craftsmen as craftsman}
-        <div class="flex flex-col gap-1 bg-white rounded-md p-2">
+        <div class="relative flex flex-col gap-1 bg-white rounded-md p-2">
             <div class="flex flex-col sm:flex-row gap-1 xs:max-sm:justify-center sm:items-center">
                 <div class="inline-flex flex-row gap-1 items-center">
                     <span class="py-1 px-2 bg-24-blue text-white rounded-md mr-1">{craftsman.rankingScore.toFixed(1)}</span>
@@ -80,7 +81,7 @@
                     <span>{craftsman.name}</span>
                 </div>
         
-                <div class="inline-grid w-min" style="--rating: {craftsman.rankingScore / 0.05}%;">
+                <div class="inline-grid w-min" style="--rating: {craftsman.rankingScore / 0.03}%;">
                     <div class="text-gray-400 col-[1] row-[1] w-full text-lg">
                         <span>★★★★★</span>
                     </div>
@@ -93,6 +94,11 @@
                 <span class="material-symbols-rounded text-lg">location_on</span>
                 <span class="text-sm">{Math.round(craftsman.distance * 10) / 10} km entfernt</span>
             </div>
+            {#if $admin_mode}
+                <button on:click={() => {goto('/update/' + craftsman.id)}} class="py-1 px-2 bg-24-blue rounded-bl-md rounded-tr-md absolute top-0 right-0">
+                    <span class="material-symbols-rounded text-lg text-white">edit_square</span>
+                </button>    
+            {/if}
         </div>
     {:else}
         {#if loading}
