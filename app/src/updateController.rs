@@ -34,6 +34,7 @@ struct PatchResponse {
 
 pub async fn update_craftsman(pool: web::Data<DbPool>, craftman_id: web::Path<i32>, req_body: web::Json<PatchRequest>) -> actix_web::Result<impl Responder> {
 
+    
     let mut conn = pool.get().expect("couldn't get db connection from pool");
 
     let PatchRequest {
@@ -57,10 +58,12 @@ pub async fn update_craftsman(pool: web::Data<DbPool>, craftman_id: web::Path<i3
         .execute(&mut conn)
         .expect("Error updating score");
     }
+    
     if profileDescriptionScore.is_some() || profilePictureScore.is_some() {
         let update_query = format!("UPDATE quality_factor_score SET profile_score = 0.4 * profile_picture_score + 0.6 * profile_description_score WHERE profile_id = {}", &craftman_id);
         diesel::sql_query(update_query).execute(&mut conn).expect("Error updating score");
     }
+    
     if maxDrivingDistance.is_some() { 
         diesel::update(service_provider_profile.filter(id.eq(&craftman_id)))
         .set(max_driving_distance.eq(maxDrivingDistance.unwrap()))   
@@ -79,5 +82,5 @@ pub async fn update_craftsman(pool: web::Data<DbPool>, craftman_id: web::Path<i3
         updated: updated
     };
     Ok(web::Json(response))
-
+    
 }
