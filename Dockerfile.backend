@@ -1,0 +1,21 @@
+FROM rust:latest
+
+RUN apt-get update && \
+    apt-get -y upgrade && \
+    apt-get -y install libpq-dev postgresql
+
+WORKDIR /app/backend
+COPY .env.docker /app/.env
+COPY ./app/ /app/backend
+
+# Add wait-for-it script
+ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /usr/wait-for-it.sh
+RUN chmod +x /usr/wait-for-it.sh
+
+RUN cargo install diesel_cli --no-default-features --features postgres
+RUN cargo build --release
+RUN diesel setup
+
+# Build the Rust application
+CMD /usr/wait-for-it.sh postgres:5432 --timeout=5 && ./target/release/app
+

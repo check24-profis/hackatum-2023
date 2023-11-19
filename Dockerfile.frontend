@@ -1,0 +1,19 @@
+FROM node:latest 
+
+WORKDIR /app
+COPY ./check24-hackatum-client /app/frontend
+COPY .env.docker /app/.env
+COPY --from=backend /app/backend /app/backend
+
+
+WORKDIR /app/frontend
+RUN npm install 
+RUN npm i -D @sveltejs/adapter-node
+RUN npm run build
+
+
+# Build the Rust application
+EXPOSE 2000
+# Set up and run migrations when the container starts
+ENTRYPOINT["node", "build"]
+

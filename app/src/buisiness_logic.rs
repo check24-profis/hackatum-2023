@@ -1,4 +1,5 @@
 use crate::model::postcode::Postcode;
+use crate::routing::craftsmen::PostalCodeQuery;
 use crate::schema::postcode::dsl::*;
 use crate::schema::service_provider_profile::dsl::*;
 use crate::{
@@ -6,6 +7,7 @@ use crate::{
 };
 use diesel::{ExpressionMethods, PgConnection, QueryDsl, RunQueryDsl};
 use serde::{Deserialize, Serialize};
+use crate::routing::craftsmen::SortBy;
 
 #[derive(Serialize, Deserialize)]
 pub struct CraftmanResponse {
@@ -13,6 +15,7 @@ pub struct CraftmanResponse {
     name: String,
     rankingScore: f64,
     distance: f64,
+    profile_score: f64,
 }
 
 // has to be in radians
@@ -24,16 +27,15 @@ pub struct CraftmanResponse {
 // }
 
 pub fn get_top_20_craftsmen(
-    input_code: &String,
+    page_query: PostalCodeQuery,
     connection: &mut PgConnection,
 ) -> Vec<CraftmanResponse> {
     //TOOO: What to do in no existent postcode
     let postcode_struct: Postcode = postcode
-        .filter(postal_code.eq(input_code))
+        .filter(postal_code.eq(page_query.postalcode))
         .first(connection)
         .expect("Failed to load top craftsmen");
 
-    println!("Postcode: {:?} \n", postcode_struct);
     let available_craftsmen: Vec<ServiceProviderProfile> =
         match postcode_struct.postcode_extension_distance_group.as_str() {
             "group_a" => service_provider_profile
@@ -63,27 +65,39 @@ pub fn get_top_20_craftsmen(
             _ => panic!("Returned a group from the database that does not exist"),
         };
 
-    println!("Craftsmen: {:?}", available_craftsmen);
     let mut craftmen_response: Vec<CraftmanResponse> = available_craftsmen
         .into_iter()
-        .map(|c| CraftmanResponse {
+        .map(|c: ServiceProviderProfile| 
+            {let profilescore_distance_rank = c.calculate_profilescore_distance_rank(postcode_struct.lon, postcode_struct.lat, connection);
+            CraftmanResponse {
             id: c.id,
             name: format!(
                 "{} {}",
                 c.first_name.as_ref().unwrap(),
                 c.last_name.as_ref().unwrap()
             ),
-            rankingScore: c.calculated_score(postcode_struct.lon, postcode_struct.lat, connection),
-            distance: c.calculate_distance(postcode_struct.lon, postcode_struct.lat),
-        })
+            profile_score: profilescore_distance_rank.0,
+            distance: profilescore_distance_rank.1,
+            rankingScore: profilescore_distance_rank.2,
+            }})
         .collect();
-
-    craftmen_response.sort_unstable_by(|a, b| {
-        a.rankingScore
-            .partial_cmp(&b.rankingScore)
-            .unwrap()
-            .reverse()
-    });
+    
+    match page_query.sort_by {
+        SortBy::Distance => {
+            craftmen_response.sort_unstable_by(|a, b| a.distance.partial_cmp(&b.distance).unwrap());
+        },
+        SortBy::Profile => {
+            craftmen_response.sort_unstable_by(|a, b| b.profile_score.partial_cmp(&a.profile_score).unwrap().reverse());
+        },
+        SortBy::Default => {
+            craftmen_response.sort_unstable_by(|a, b| {
+                a.rankingScore
+                    .partial_cmp(&b.rankingScore)
+                    .unwrap()
+                    .reverse()
+            });
+        },
+    }    
 
     craftmen_response.into_iter().take(20).collect()
 }

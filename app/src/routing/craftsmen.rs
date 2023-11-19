@@ -10,9 +10,20 @@ use crate::buisiness_logic::{get_top_20_craftsmen, CraftmanResponse};
 type DbPool = Pool<ConnectionManager<PgConnection>>;
 
 #[derive(Deserialize)]
+pub enum SortBy {
+    #[serde(rename = "default")]
+    Default,
+    #[serde(rename = "distance")]
+    Distance,
+    #[serde(rename = "profile")]
+    Profile,
+}
+
+#[derive(Deserialize)]
 pub struct PostalCodeQuery {
-    postalcode: String,
-    page: Option<String>,
+    pub postalcode: String,
+    pub page: Option<String>,
+    pub sort_by: Option<SortBy>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -26,9 +37,9 @@ pub async fn get_top20_craftmen(
 ) -> actix_web::Result<impl Responder> {
     // So, it should be called within the `web::block` closure, as well.
     let mut conn = pool.get().expect("couldn't get db connection from pool");
-    let postal_code = &postal_code_parameter.postalcode;
+    let postal_code_parameter = postal_code_parameter.into_inner();
 
-    let toptwenty = get_top_20_craftsmen(postal_code, &mut conn);
+    let toptwenty = get_top_20_craftsmen(postal_code_parameter, &mut conn);
     let response = Check24Response { data: toptwenty };
     Ok(web::Json(response))
 }
