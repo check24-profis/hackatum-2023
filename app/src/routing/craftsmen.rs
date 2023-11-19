@@ -12,7 +12,7 @@ type DbPool = Pool<ConnectionManager<PgConnection>>;
 #[derive(Deserialize)]
 pub struct PostalCodeQuery {
     postalcode: String,
-    page: String,
+    page: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]

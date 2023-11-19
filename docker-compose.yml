@@ -1,15 +1,24 @@
 version: "3"
 services:
-  app:
+  frontend:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.backend
+    environment:
+      PORT: 2000
+    ports:
+      - "3001:2000"
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgres://postgres:jdiesel@postgres:5432/HACKDB # Corrected database name
+      DATABASE_URL: postgres://postgres:jdiesel@postgres:5432/HACKDB
     ports:
-      - "8080:8080" # Adjust the port as needed
+      - "3000:8080"
 
   postgres:
     image: postgres:latest
