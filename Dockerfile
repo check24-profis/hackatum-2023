@@ -1,4 +1,4 @@
-FROM rust:latest
+FROM rust:latest as builder
 
 RUN apt-get update && \
     apt-get -y upgrade && \
@@ -18,9 +18,27 @@ RUN chmod +x /usr/wait-for-it.sh
 # Build the Rust application
 RUN cargo build --release
 
+FROM node:latest as frontend
+
+WORKDIR /app
+COPY ./check24-hackatum-client /app/frontend
+
+WORKDIR /app/frontend
+RUN npm install
+RUN npm run build
+
+# Final image
+FROM rust:latest
+
+WORKDIR /app
+COPY --from=builder /app/target/release/app /app/app
+COPY --from=frontend /app/frontend/.svelte-kit /app/frontend/.svelte-kit
+
 # Set up and run migrations when the container starts
 CMD /usr/wait-for-it.sh postgres:5432 --timeout=60 && \
     diesel setup && \
     diesel migration run && \
-    ./target/release/my_rust_app
+    ./app && \
+    cd frontend && \
+    npm run dev
 
