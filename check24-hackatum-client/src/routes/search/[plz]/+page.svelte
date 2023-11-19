@@ -5,6 +5,7 @@
     import { fetch_craftsmen } from '$lib/api_utils.js';
 
     export let data;
+    let sort_by = 'default';
     let page_counter = 0;
     let loading = true;
 
@@ -14,13 +15,15 @@
         loading = state;
     }
 
-    async function load_craftsmen_wrapper(plz, page) {
+    async function load_craftsmen_wrapper(plz, page, sort_by) {
         if(typeof window !== 'undefined') {
-            craftsmen = await fetch_craftsmen(window.location.origin.split(":").slice(0, 2).join(':'), plz, page, load_state_update);
+            craftsmen = await fetch_craftsmen(window.location.origin.split(":").slice(0, 2).join(':'), plz, page, sort_by, load_state_update);
         }
     }
 
     $: load_craftsmen_wrapper(data.plz, page_counter);
+    $: console.log(page_counter);
+    $: sort_by, page_counter=0;
 </script>
 
 <svelte:head>
@@ -43,10 +46,22 @@
     </style>
 </svelte:head>
 
-<h1 
-    class="text-2xl text-white font-bold" 
-    style="filter: drop-shadow(0px 0px 12px #063773)">Zu Ihrer Postleitzahl ({data.plz}) passende Profis
-</h1>
+<div class="flex flex-row items-center justify-between">
+    <h1 
+        class="text-2xl text-white font-bold" 
+        style="filter: drop-shadow(0px 0px 12px #063773)">Zu Ihrer Postleitzahl ({data.plz}) passende Profis
+    </h1>
+
+    <div> 
+        <label for="sort" class="text-white mr-2 font-bold" style="filter: drop-shadow(0px 0px 12px #063773)"> Sortieren nach </label>
+        <select class="text-white bg-24-blue rounded-md p-[0.35rem]" bind:value={sort_by}>
+            <option value="default">Standard</option>
+            <option value="distance">Entfernung</option>
+            <option value="profile">Profilbewertung</option>
+        </select>
+    </div>
+</div>
+
 <!-- TODO: show number of *actual* results -->
 {#if !loading}
     <span 
