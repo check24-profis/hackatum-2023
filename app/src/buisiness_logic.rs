@@ -36,7 +36,6 @@ pub fn get_top_20_craftsmen(
         .first(connection)
         .expect("Failed to load top craftsmen");
 
-    println!("Postcode: {:?} \n", postcode_struct);
     let available_craftsmen: Vec<ServiceProviderProfile> =
         match postcode_struct.postcode_extension_distance_group.as_str() {
             "group_a" => service_provider_profile
@@ -66,7 +65,6 @@ pub fn get_top_20_craftsmen(
             _ => panic!("Returned a group from the database that does not exist"),
         };
 
-    println!("Craftsmen: {:?}", available_craftsmen);
     let mut craftmen_response: Vec<CraftmanResponse> = available_craftsmen
         .into_iter()
         .map(|c: ServiceProviderProfile| 
