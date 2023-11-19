@@ -35,7 +35,8 @@ pub struct ServiceProviderProfile {
 }
 
 impl ServiceProviderProfile {
-    pub fn calculated_score(&self, lon: f64, lat: f64, connection: &mut PgConnection) -> f64 {
+    pub fn calculate_profilescore_distance_rank(&self, lon: f64, lat: f64, connection: &mut PgConnection) -> (f64, f64, f64) {
+        // :returns tuple of (profile_score, distance, rank)
         let quality_factor: NewQualityFactorScore = quality_factor_score
             .filter(
                 profile_id
@@ -53,10 +54,10 @@ impl ServiceProviderProfile {
             false => 0.15,
         };
 
-        distance_weight * distance_score + (1.0 - distance_weight) * quality_factor.profile_score.unwrap()
+       (quality_factor.profile_score.unwrap(), distance, distance_weight * distance_score + (1.0 - distance_weight) * quality_factor.profile_score.unwrap())
     }
 
-    pub fn calculate_distance(&self, another_lon: f64, another_lat: f64) -> f64 {
+    fn calculate_distance(&self, another_lon: f64, another_lat: f64) -> f64 {
         let lat = match self.lat {
             None => panic!("Cant calculate distance of non initialized craftsman"),
             Some(lat) => f64::to_radians(lat),
